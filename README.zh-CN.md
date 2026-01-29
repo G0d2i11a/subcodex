@@ -39,7 +39,7 @@ Claude Code 和 Codex 各有所长：
 ```markdown
 ## Subagent Mode: full-subagent
 
-所有代码修改必须通过 `mcp__subcodex__codex`：
+所有代码修改必须通过 `mcp__subcodex__run`：
 - Claude：分析、规划、编写 Codex Contract、验证结果
 - Subcodex：所有文件编辑、代码生成、重构
 ```
@@ -121,7 +121,7 @@ pnpm build
 
 ## 工具
 
-### `codex`
+### `run`
 
 启动新的 Codex 会话。
 
@@ -136,7 +136,7 @@ pnpm build
 | `stallTimeoutMinutes` | number | 否 | 检测卡顿的超时分钟数（默认：5） |
 | `maxRecoveryAttempts` | number | 否 | 卡顿时最大自动恢复次数（默认：2） |
 
-### `codex-reply`
+### `reply`
 
 继续现有的 Codex 会话。
 
@@ -164,7 +164,7 @@ pnpm build
 ```markdown
 ## Subcodex 卡顿处理
 
-当 `mcp__subcodex__codex` 返回 `needsUserInput: true` 时：
+当 `mcp__subcodex__run` 返回 `needsUserInput: true` 时：
 - 使用 AskUserQuestion 询问用户如何继续
 - 选项：重试、跳过当前任务、手动干预
 ```

@@ -335,7 +335,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       {
-        name: "codex",
+        name: "run",
         description: "Run a Codex session with streaming progress, stall detection, and auto-recovery",
         inputSchema: {
           type: "object",
@@ -380,7 +380,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         },
       },
       {
-        name: "codex-reply",
+        name: "reply",
         description: "Continue a Codex conversation by providing the thread id and prompt",
         inputSchema: {
           type: "object",
@@ -418,7 +418,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
-  if (name === "codex") {
+  if (name === "run") {
     const {
       prompt,
       cwd,
@@ -546,7 +546,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
   }
 
-  if (name === "codex-reply") {
+  if (name === "reply") {
     const { threadId, prompt, level, stallTimeoutMinutes, maxRecoveryAttempts } = args as {
       threadId: string;
       prompt: string;

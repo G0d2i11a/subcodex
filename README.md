@@ -39,7 +39,7 @@ All code modifications go through subcodex. Claude only does analysis, planning,
 ```markdown
 ## Subagent Mode: full-subagent
 
-All code changes must go through `mcp__subcodex__codex`:
+All code changes must go through `mcp__subcodex__run`:
 - Claude: analyze, plan, write Codex Contract, verify results
 - Subcodex: all file edits, code generation, refactoring
 ```
@@ -121,7 +121,7 @@ Or for local development:
 
 ## Tools
 
-### `codex`
+### `run`
 
 Start a new Codex session.
 
@@ -136,7 +136,7 @@ Start a new Codex session.
 | `stallTimeoutMinutes` | number | No | Minutes of inactivity before detecting stall (default: 5) |
 | `maxRecoveryAttempts` | number | No | Max auto-recovery attempts when stalled (default: 2) |
 
-### `codex-reply`
+### `reply`
 
 Continue an existing Codex conversation.
 
@@ -164,7 +164,7 @@ When the response contains `needsUserInput: true`, Claude should use `AskUserQue
 ```markdown
 ## Subcodex Stall Handling
 
-When `mcp__subcodex__codex` returns `needsUserInput: true`:
+When `mcp__subcodex__run` returns `needsUserInput: true`:
 - Use AskUserQuestion to ask the user how to proceed
 - Options: retry, skip current task, manual intervention
 ```
