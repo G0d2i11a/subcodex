@@ -17,7 +17,12 @@
     "openai",
     "claude",
     "subagent",
-    "ai-agent"
+    "ai-agent",
+    "orchestration",
+    "task-delegation",
+    "automation",
+    "multi-agent",
+    "stall-detection"
   ],
   "author": "G0d2i11a",
   "license": "MIT",
