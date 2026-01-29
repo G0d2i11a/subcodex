@@ -72,10 +72,10 @@ Claude 处理所有任务，失败时降级到 subcodex。
 
 ## 安装
 
-### 从 npm 安装（发布后）
+### 从 npm 安装
 
 ```bash
-npx subcodex
+npx subcodex-mcp
 ```
 
 ### 从源码安装
@@ -96,7 +96,7 @@ pnpm build
   "mcpServers": {
     "subcodex": {
       "command": "npx",
-      "args": ["-y", "subcodex"],
+      "args": ["-y", "subcodex-mcp"],
       "env": {},
       "type": "stdio"
     }

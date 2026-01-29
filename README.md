@@ -72,10 +72,10 @@ Claude handles everything, but falls back to subcodex on failure.
 
 ## Installation
 
-### From npm (after publishing)
+### From npm
 
 ```bash
-npx subcodex
+npx subcodex-mcp
 ```
 
 ### From source
@@ -96,7 +96,7 @@ Add to your Claude Code MCP config (`~/.claude.json`):
   "mcpServers": {
     "subcodex": {
       "command": "npx",
-      "args": ["-y", "subcodex"],
+      "args": ["-y", "subcodex-mcp"],
       "env": {},
       "type": "stdio"
     }
