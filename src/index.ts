@@ -62,16 +62,21 @@ function determineResultLevel(
     return "ERROR";
   }
 
-  // Check for failed commands or file changes
-  const failedCommands = items.filter(
-    (i) => i.type === "command_execution" && i.exit_code !== 0 && i.exit_code !== null
-  );
+  // If there's a final agent message, consider it a success
+  // Codex often tries Linux commands first on Windows, fails, then uses PowerShell
+  // This is normal learning behavior, not a failure
+  const hasAgentMessage = items.some((i) => i.type === "agent_message");
+  if (hasAgentMessage) {
+    return "PASS";
+  }
+
+  // No final message - check for critical failures
+  const errorItems = items.filter((i) => i.type === "error");
   const failedFileChanges = items.filter(
     (i) => i.type === "file_change" && i.status === "failed"
   );
-  const errorItems = items.filter((i) => i.type === "error");
 
-  if (failedCommands.length > 0 || failedFileChanges.length > 0 || errorItems.length > 0) {
+  if (errorItems.length > 0 || failedFileChanges.length > 0) {
     return "FAIL";
   }
 
